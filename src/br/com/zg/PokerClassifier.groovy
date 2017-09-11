@@ -1,6 +1,6 @@
 package br.com.zg
 
-interface Classifier {
+  interface PokerClassifier {
 
 	boolean isRoyal(PokerHand pkHand)
 

@@ -13,7 +13,8 @@ class PokerHand {
 			validHand = ValidHand.INVALID
 		} else {
 			validHand = ValidHand.VALID
-			Checker
+			this.typeHand = Checker.whichHand(this)
+			println(typeHand)
 		}
 
 	}

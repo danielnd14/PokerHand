@@ -1,8 +1,8 @@
 package br.com.zg
 
-final class Checker implements Classifier {
+final class Checker {
 
-	private static PlayingCards baralho = new PlayingCards()
+	private static PlayingCards baralho = PlayingCards.instance
 
 	static boolean isHandEquals(PokerHand actualHand, PokerHand otherHand) {
 
@@ -30,57 +30,57 @@ final class Checker implements Classifier {
 		return valid
 	}
 
-	static Enum whichHand(PokerHand pkHand){
+	static Enum whichHand(PokerHand pkHand) {
+
+		Enum retorno
+
+		HandClassifier handClassifier = new HandClassifier(baralho)
+
+		if (handClassifier.isRoyal(pkHand)) {
+
+			retorno = TypeHand.ROYAL_FLUSH
+
+		} else if (handClassifier.isStraight(pkHand)) {
+
+			retorno = TypeHand.STRAIGHT_FLUSH
+
+		} else if (handClassifier.isQuadra(pkHand)) {
+
+			retorno = TypeHand.QUADRA
+
+		} else if (handClassifier.isFull(pkHand)) {
+
+			retorno = TypeHand.FULL_HOUSE
+
+		} else if (handClassifier.isFlush(pkHand)) {
+
+			retorno = TypeHand.FLUSH
+
+		} else if (handClassifier.isSequence(pkHand)) {
+
+			retorno = TypeHand.SEQUENCIA
+
+		} else if (handClassifier.isTrinca(pkHand)) {
+
+			retorno = TypeHand.TRINCA
+
+		} else if (handClassifier.is2pares(pkHand)) {
+
+			retorno = TypeHand.DOIS_PARES
+
+		} else if (handClassifier.is1Par(pkHand)) {
+
+			retorno = TypeHand.UM_PAR
+
+		} else if (handClassifier.isCartaAlta(pkHand)) {
+
+			retorno = TypeHand.CARTA_ALTA
+
+		}
+
+		return retorno
 
 	}
 
-	@Override
-	boolean isRoyal(PokerHand pkHand) {
-		return false
-	}
 
-	@Override
-	boolean isStraight(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean isQuadra(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean isFull(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean isFlush(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean isSequence(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean isTrinca(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean is2pares(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean is1Par(PokerHand pkHand) {
-		return false
-	}
-
-	@Override
-	boolean isCartaAlta(PokerHand pkHand) {
-		return false
-	}
 }
