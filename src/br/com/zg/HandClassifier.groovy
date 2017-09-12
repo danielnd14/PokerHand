@@ -2,205 +2,197 @@ package br.com.zg
 
 
 class HandClassifier implements PokerClassifier {
-    private PlayingCards baralho
-    private PokerHand pkHand
-    private ArrayList<Integer> valores
-    private String[] cards
+	private PlayingCards baralho
+	private PokerHand pkHand
+	private List<Integer> valores
+	private String[] cards
 
-    HandClassifier(PlayingCards baralho, PokerHand pkHand) {
+	HandClassifier(PlayingCards baralho, PokerHand pkHand) {
 
-        this.baralho = baralho
-        this.pkHand = pkHand
-        this.cards = pkHand.cards
-        valores = baralho.getValuesFromCards(this.cards)
+		this.baralho = baralho
+		this.pkHand = pkHand
+		this.cards = pkHand.cards
+		valores = baralho.getValuesFromCards(this.cards)
 
-    }
+	}
 
-    @Override
-    boolean isRoyal() {
+	@Override
+	boolean isRoyal() {
 
-        boolean isRoyalFlush = true
+		boolean isRoyalFlush = true
 
-        valores.each {
+		valores.each {
 
-            if (it <= 9) {
-                isRoyalFlush = false
-            }
-        }
-        isRoyalFlush = isRoyalFlush ? isSequenciaDevalores(valores) : false
+			if (it <= 9) {
+				isRoyalFlush = false
+			}
+		}
+		isRoyalFlush = isRoyalFlush ? isSequenciaDevalores(valores) : false
 
-        isRoyalFlush = isRoyalFlush ? isSameSuit(cards) : false
+		isRoyalFlush = isRoyalFlush ? isSameSuit(cards) : false
 
-        return isRoyalFlush
-    }
+		return isRoyalFlush
+	}
 
-    @Override
-    boolean isStraight() {
+	@Override
+	boolean isStraight() {
 
-        boolean isStraightFlush = true
+		boolean isStraightFlush = true
 
-        isStraightFlush = isSequenciaDevalores(valores)
+		isStraightFlush = isSequenciaDevalores(valores)
 
-        isStraightFlush = isStraightFlush ? isSameSuit(cards) : false
+		isStraightFlush = isStraightFlush ? isSameSuit(cards) : false
 
-        return isStraightFlush
-    }
+		return isStraightFlush
+	}
 
-    @Override
-    boolean isQuadra() {
+	@Override
+	boolean isQuadra() {
 
-        boolean quadra
+		boolean quadra
 
-        quadra = (valores.get(0) + valores.get(1) + valores.get(2) + valores.get(3)) == (valores.get(0) * 4)
+		quadra = (valores.get(0) + valores.get(1) + valores.get(2) + valores.get(3)) == (valores.get(0) * 4)
 
-        if (!quadra) {
+		if (!quadra) {
 
-            quadra = (valores.get(1) + valores.get(2) + valores.get(3) + valores.get(4)) == (valores.get(1) * 4)
+			quadra = (valores.get(1) + valores.get(2) + valores.get(3) + valores.get(4)) == (valores.get(1) * 4)
 
-        }
+		}
 
-        return quadra
-    }
+		return quadra
+	}
 
-    @Override
-    boolean isFull() {
+	@Override
+	boolean isFull() {
 
-        boolean fullHouse = false
+		boolean fullHouse = false
 
-        fullHouse = valores.get(0) == valores.get(1) && (valores.get(2) + valores.get(3) + valores.get(4)) == valores.last() * 3
+		fullHouse = valores.get(0) == valores.get(1) && (valores.get(2) + valores.get(3) + valores.get(4)) == valores.last() * 3
 
-        if (!fullHouse) {
+		fullHouse = !fullHouse ? (valores.get(0) + valores.get(1) + valores.get(2)) == valores.first() * 3 && valores.get(3) == valores.get(4) : true
 
-            fullHouse = (valores.get(0) + valores.get(1) + valores.get(2)) == valores.first() * 3 && valores.get(3) == valores.get(4)
+		return fullHouse
+	}
 
-        }
+	@Override
+	boolean isFlush() {
 
-        return fullHouse
-    }
+		boolean flush
 
-    @Override
-    boolean isFlush() {
+		flush = isSameSuit(cards)
 
-        boolean flush
+		flush = flush ? !isSequenciaDevalores(valores) : false
 
-        flush = isSameSuit(cards)
+		return flush
+	}
 
-        flush = flush ? !isSequenciaDevalores(valores) : false
+	@Override
+	boolean isSequence() {
 
-        return flush
-    }
+		boolean sequence
 
-    @Override
-    boolean isSequence() {
+		sequence = !isSameSuit(cards)
 
-        boolean sequence
+		sequence = sequence ? isSequenciaDevalores(valores) : false
 
-        sequence = !isSameSuit(cards)
+		return sequence
+	}
 
-        sequence = sequence ? isSequenciaDevalores(valores) : false
+	@Override
+	boolean isTrinca() {
+		boolean trinca
 
-        return sequence
-    }
+		trinca = (valores.get(0) + valores.get(1) + valores.get(2)) == valores.first() * 3 && valores.get(3) != valores.get(4)
 
-    @Override
-    boolean isTrinca() {
-        boolean trinca
+		trinca = !trinca ? valores.get(0) != valores.get(1) && (valores.get(2) + valores.get(3) + valores.get(4)) == valores.last() * 3 : true
 
-        trinca = (valores.get(0) + valores.get(1) + valores.get(2)) == valores.first() * 3 && valores.get(3) != valores.get(4)
+		trinca = !trinca ? valores.first() != valores.last() && (valores.get(1) + valores.get(2) + valores.get(3)) == valores.get(1)* 3 : true
 
-        if (!trinca) {
+		return trinca
+	}
 
-            trinca = valores.get(0) != valores.get(1) && (valores.get(2) + valores.get(3) + valores.get(4)) == valores.last() * 3
+	@Override
+	boolean is2pares() {
+		boolean doispares
 
-        }
+		doispares = valores.first() == valores.get(1) && valores.get(3) == valores.last()
 
-        return trinca
-    }
+		doispares = !doispares ? valores.get(0) == valores.get(1) && valores.get(2) == valores.get(3) : true
 
-    @Override
-    boolean is2pares() {
-        boolean doispares
+		doispares = !doispares ? valores.get(1) == valores.get(2) && valores.get(3) == valores.get(4) : true
 
-        doispares = valores.get(0) == valores.get(1) && valores.get(3) == valores.last()
+		return doispares
+	}
 
-        if (!doispares) {
-            doispares = valores.get(0) == valores.get(1) && valores.get(2) == valores.get(3)
-        }
+	@Override
+	boolean is1Par() {
+		boolean umpar
 
-        if (!doispares) {
-            doispares = valores.get(1) == valores.get(2) && valores.get(3) == valores.get(4)
-        }
+		umpar = valores.first() == valores.get(1)
 
-        return doispares
-    }
+		umpar = !umpar ? valores.get(1) == valores.get(2) : true
 
-    @Override
-    boolean is1Par() {
-        boolean umpar
+		umpar = !umpar ? valores.get(2) == valores.get(3) : true
 
-        umpar = valores.get(0) == valores.get(1)
+		umpar = !umpar ? valores.get(3) == valores.last() : true
 
-        if (!umpar) {
-            valores.get(3) == valores.last()
-        }
+		return umpar
+	}
 
-        return umpar
-    }
+	@Override
+	boolean isCartaAlta() {
+		return true
+	}
 
-    @Override
-    boolean isCartaAlta() {
-        return true
-    }
+	static boolean isThereDuplicity(List valores) {
 
-    static boolean isThereDuplicity(ArrayList valores) {
+		boolean duplicity = false
 
-        boolean duplicity = false
+		firstFor:
+		for (int i = 0; i < valores.size(); i++) {
+			int aux = valores.get(i)
 
-        firstFor:
-        for (int i = 0; i < valores.size(); i++) {
-            int aux = valores.get(i)
+			for (int j = i + 1; j < valores.size(); j++) {
+				if (aux == valores.get(j)) {
+					duplicity = true
+					break firstFor
+				}
+			}
 
-            for (int j = i + 1; j < valores.size(); j++) {
-                if (aux == valores.get(j)) {
-                    duplicity = true
-                    break firstFor
-                }
-            }
+		}
+		return duplicity
 
-        }
-        return duplicity
+	}
 
-    }
+	static boolean isSequenciaDevalores(List valores) {
 
-    static boolean isSequenciaDevalores(ArrayList valores) {
+		int soma = getSomaValores(valores)
 
-        int soma = getSomaValores(valores)
+		return (soma - (valores.first() * 5)) == 10 ? !isThereDuplicity(valores) : false
+	}
 
-        return (soma - (valores.first() * 5)) == 10 ? !isThereDuplicity(valores) : false
-    }
+	static int getSomaValores(ArrayList valores) {
+		int soma = 0
 
-    static int getSomaValores(ArrayList valores) {
-        int soma = 0
+		valores.each {
+			soma += it
+		}
 
-        valores.each {
-            soma += it
-        }
+		return soma
+	}
 
-        return soma
-    }
+	boolean isSameSuit(String[] cards) {
+		boolean sameSuit = true
 
-    boolean isSameSuit(String[] cards) {
-        boolean sameSuit = true
+		String suit = baralho.getSuit(cards[0])
+		cards.each {
+			if (!suit.equals(baralho.getSuit(it))) {
+				sameSuit = false
+			}
 
-        String suit = baralho.getSuit(cards[0])
-        cards.each {
-            if (!suit.equals(baralho.getSuit(it))) {
-                sameSuit = false
-            }
+		}
 
-        }
+		return sameSuit
 
-        return sameSuit
-
-    }
+	}
 }

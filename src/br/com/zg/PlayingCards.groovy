@@ -106,9 +106,9 @@ class PlayingCards {
         return retorno
     }
 
-    ArrayList getValuesFromCards(String[] cards) {
+    List getValuesFromCards(String[] cards) {
 
-        ArrayList<Integer> valores = new ArrayList()
+        List<Integer> valores = new ArrayList()
 
         for (int i = 0; i < cards.length; i++) {
             valores.add(this.allCards.get(cards[i]))
