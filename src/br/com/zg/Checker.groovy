@@ -34,45 +34,45 @@ final class Checker {
 
 		Enum retorno
 
-		HandClassifier handClassifier = new HandClassifier(baralho)
+		HandClassifier handClassifier = new HandClassifier(baralho,pkHand)
 
-		if (handClassifier.isRoyal(pkHand)) {
+		if (handClassifier.isRoyal()) {
 
 			retorno = TypeHand.ROYAL_FLUSH
 
-		} else if (handClassifier.isStraight(pkHand)) {
+		} else if (handClassifier.isStraight()) {
 
 			retorno = TypeHand.STRAIGHT_FLUSH
 
-		} else if (handClassifier.isQuadra(pkHand)) {
+		} else if (handClassifier.isQuadra()) {
 
 			retorno = TypeHand.QUADRA
 
-		} else if (handClassifier.isFull(pkHand)) {
+		} else if (handClassifier.isFull()) {
 
 			retorno = TypeHand.FULL_HOUSE
 
-		} else if (handClassifier.isFlush(pkHand)) {
+		} else if (handClassifier.isFlush()) {
 
 			retorno = TypeHand.FLUSH
 
-		} else if (handClassifier.isSequence(pkHand)) {
+		} else if (handClassifier.isSequence()) {
 
 			retorno = TypeHand.SEQUENCIA
 
-		} else if (handClassifier.isTrinca(pkHand)) {
+		} else if (handClassifier.isTrinca()) {
 
 			retorno = TypeHand.TRINCA
 
-		} else if (handClassifier.is2pares(pkHand)) {
+		} else if (handClassifier.is2pares()) {
 
 			retorno = TypeHand.DOIS_PARES
 
-		} else if (handClassifier.is1Par(pkHand)) {
+		} else if (handClassifier.is1Par()) {
 
 			retorno = TypeHand.UM_PAR
 
-		} else if (handClassifier.isCartaAlta(pkHand)) {
+		} else if (handClassifier.isCartaAlta()) {
 
 			retorno = TypeHand.CARTA_ALTA
 

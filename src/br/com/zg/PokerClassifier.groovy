@@ -2,24 +2,24 @@ package br.com.zg
 
   interface PokerClassifier {
 
-	boolean isRoyal(PokerHand pkHand)
+	boolean isRoyal()
 
-	boolean isStraight(PokerHand pkHand)
+	boolean isStraight()
 
-	boolean isQuadra(PokerHand pkHand)
+	boolean isQuadra()
 
-	boolean isFull(PokerHand pkHand)
+	boolean isFull()
 
-	boolean isFlush(PokerHand pkHand)
+	boolean isFlush()
 
-	boolean isSequence(PokerHand pkHand)
+	boolean isSequence()
 
-	boolean isTrinca(PokerHand pkHand)
+	boolean isTrinca()
 
-	boolean is2pares(PokerHand pkHand)
+	boolean is2pares()
 
-	boolean is1Par(PokerHand pkHand)
+	boolean is1Par()
 
-	boolean isCartaAlta(PokerHand pkHand)
+	boolean isCartaAlta()
 
 }

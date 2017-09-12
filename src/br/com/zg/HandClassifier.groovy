@@ -2,237 +2,205 @@ package br.com.zg
 
 
 class HandClassifier implements PokerClassifier {
-	private PlayingCards baralho
+    private PlayingCards baralho
+    private PokerHand pkHand
+    private ArrayList<Integer> valores
+    private String[] cards
 
-	HandClassifier(PlayingCards baralho) {
-		this.baralho = baralho
-	}
+    HandClassifier(PlayingCards baralho, PokerHand pkHand) {
 
-	@Override
-	boolean isRoyal(PokerHand pkHand) {
+        this.baralho = baralho
+        this.pkHand = pkHand
+        this.cards = pkHand.cards
+        valores = baralho.getValuesFromCards(this.cards)
 
-		boolean isRoyalFlush = true
+    }
 
-		String[] cards = pkHand.cards
+    @Override
+    boolean isRoyal() {
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+        boolean isRoyalFlush = true
 
-		valores.each {
-			if (it <= 9) {
-				isRoyalFlush = false
-			}
-		}
+        valores.each {
 
-		isRoyalFlush = isRoyalFlush ? isSequenciaDevalores(valores):false
+            if (it <= 9) {
+                isRoyalFlush = false
+            }
+        }
+        isRoyalFlush = isRoyalFlush ? isSequenciaDevalores(valores) : false
 
-		isRoyalFlush = isRoyalFlush ? isSameSuit(cards):false
+        isRoyalFlush = isRoyalFlush ? isSameSuit(cards) : false
 
-		return isRoyalFlush
-	}
+        return isRoyalFlush
+    }
 
-	@Override
-	boolean isStraight(PokerHand pkHand) {
+    @Override
+    boolean isStraight() {
 
-		boolean isStraightFlush = true
+        boolean isStraightFlush = true
 
-		String[] cards = pkHand.cards
+        isStraightFlush = isSequenciaDevalores(valores)
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+        isStraightFlush = isStraightFlush ? isSameSuit(cards) : false
 
-		isStraightFlush = isSequenciaDevalores(valores)
+        return isStraightFlush
+    }
 
-		isStraightFlush = isStraightFlush ? isSameSuit(cards):false
+    @Override
+    boolean isQuadra() {
 
-		return isStraightFlush
-	}
+        boolean quadra
 
-	@Override
-	boolean isQuadra(PokerHand pkHand) {
+        quadra = (valores.get(0) + valores.get(1) + valores.get(2) + valores.get(3)) == (valores.get(0) * 4)
 
-		boolean quadra
-		String[] cards = pkHand.cards
+        if (!quadra) {
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+            quadra = (valores.get(1) + valores.get(2) + valores.get(3) + valores.get(4)) == (valores.get(1) * 4)
 
-		quadra = valores.get(0) == valores.get(1) == valores.get(2) == valores.get(3)
+        }
 
-		if (!quadra) {
+        return quadra
+    }
 
-			quadra = valores.get(1) == valores.get(2) == valores.get(3) == valores.get(4)
+    @Override
+    boolean isFull() {
 
-		}
+        boolean fullHouse = false
 
-		return quadra
-	}
+        fullHouse = valores.get(0) == valores.get(1) && (valores.get(2) + valores.get(3) + valores.get(4)) == valores.last() * 3
 
-	@Override
-	boolean isFull(PokerHand pkHand) {
+        if (!fullHouse) {
 
-		boolean isFullHouse = false
-		String[] cards = pkHand.cards
+            fullHouse = (valores.get(0) + valores.get(1) + valores.get(2)) == valores.first() * 3 && valores.get(3) == valores.get(4)
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+        }
 
-		isFullHouse = valores.get(0) == valores.get(1) && valores.get(2) == valores.get(3) == valores.get(4)
+        return fullHouse
+    }
 
-		if (!isFullHouse) {
+    @Override
+    boolean isFlush() {
 
-			isFullHouse = valores.get(0) == valores.get(1) == valores.get(2) && valores.get(3) == valores.get(4)
-		}
+        boolean flush
 
-		return isFullHouse
-	}
+        flush = isSameSuit(cards)
 
-	@Override
-	boolean isFlush(PokerHand pkHand) {
+        flush = flush ? !isSequenciaDevalores(valores) : false
 
-		boolean flush
-		String[] cards = pkHand.cards
+        return flush
+    }
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+    @Override
+    boolean isSequence() {
 
-		flush = isSameSuit(cards)
+        boolean sequence
 
-		flush = flush ? !isSequenciaDevalores(valores):false
+        sequence = !isSameSuit(cards)
 
-		return flush
-	}
+        sequence = sequence ? isSequenciaDevalores(valores) : false
 
-	@Override
-	boolean isSequence(PokerHand pkHand) {
-		boolean sequence
+        return sequence
+    }
 
-		String[] cards = pkHand.cards
+    @Override
+    boolean isTrinca() {
+        boolean trinca
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+        trinca = (valores.get(0) + valores.get(1) + valores.get(2)) == valores.first() * 3 && valores.get(3) != valores.get(4)
 
-		sequence = !isSameSuit(cards)
+        if (!trinca) {
 
-		sequence = sequence ? isSequenciaDevalores(valores):false
+            trinca = valores.get(0) != valores.get(1) && (valores.get(2) + valores.get(3) + valores.get(4)) == valores.last() * 3
 
-		return sequence
-	}
+        }
 
-	@Override
-	boolean isTrinca(PokerHand pkHand) {
-		boolean trinca
+        return trinca
+    }
 
-		String[] cards = pkHand.cards
+    @Override
+    boolean is2pares() {
+        boolean doispares
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+        doispares = valores.get(0) == valores.get(1) && valores.get(3) == valores.last()
 
-		trinca = valores.get(0) == valores.get(1) == valores.get(2) && valores.get(3) != valores.get(4)
+        if (!doispares) {
+            doispares = valores.get(0) == valores.get(1) && valores.get(2) == valores.get(3)
+        }
 
-		if(!trinca){
+        if (!doispares) {
+            doispares = valores.get(1) == valores.get(2) && valores.get(3) == valores.get(4)
+        }
 
-			trinca = valores.get(0) != valores.get(1) && valores.get(2) == valores.get(3) == valores.get(4)
+        return doispares
+    }
 
-		}
+    @Override
+    boolean is1Par() {
+        boolean umpar
 
-		return trinca
-	}
+        umpar = valores.get(0) == valores.get(1)
 
-	@Override
-	boolean is2pares(PokerHand pkHand) {
-		boolean doispares
+        if (!umpar) {
+            valores.get(3) == valores.last()
+        }
 
-		String[] cards = pkHand.cards
+        return umpar
+    }
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+    @Override
+    boolean isCartaAlta() {
+        return true
+    }
 
-		doispares = valores.get(0) == valores.get(1) && valores.get(3) == valores.last()
+    static boolean isThereDuplicity(ArrayList valores) {
 
-		if(!doispares){
-			doispares = valores.get(0) == valores.get(1) && valores.get(2) == valores.get(3)
-		}
+        boolean duplicity = false
 
-		if(!doispares){
-			doispares = valores.get(1) == valores.get(2) && valores.get(3) == valores.get(4)
-		}
+        firstFor:
+        for (int i = 0; i < valores.size(); i++) {
+            int aux = valores.get(i)
 
-		return doispares
-	}
+            for (int j = i + 1; j < valores.size(); j++) {
+                if (aux == valores.get(j)) {
+                    duplicity = true
+                    break firstFor
+                }
+            }
 
-	@Override
-	boolean is1Par(PokerHand pkHand) {
-		boolean umpar
+        }
+        return duplicity
 
-		String[] cards = pkHand.cards
+    }
 
-		ArrayList<Integer> valores = getValuesFromCards(cards)
+    static boolean isSequenciaDevalores(ArrayList valores) {
 
-		umpar = valores.get(0) == valores.get(1)
+        int soma = getSomaValores(valores)
 
-		if(!umpar){
-			valores.get(3) == valores.last()
-		}
+        return (soma - (valores.first() * 5)) == 10 ? !isThereDuplicity(valores) : false
+    }
 
-		return umpar
-	}
+    static int getSomaValores(ArrayList valores) {
+        int soma = 0
 
-	@Override
-	boolean isCartaAlta(PokerHand pkHand) {
-		return true
-	}
+        valores.each {
+            soma += it
+        }
 
-	static boolean isThereDuplicity(ArrayList valores) {
+        return soma
+    }
 
-		boolean duplicity = false
+    boolean isSameSuit(String[] cards) {
+        boolean sameSuit = true
 
-		firstFor:
-		for (int i = 0; i < valores.size(); i++) {
-			int aux = valores.get(i)
+        String suit = baralho.getSuit(cards[0])
+        cards.each {
+            if (!suit.equals(baralho.getSuit(it))) {
+                sameSuit = false
+            }
 
-			for (int j = i + 1; j < valores.size(); j++) {
-				if (aux == valores.get(j)) {
-					duplicity = true
-					break firstFor
-				}
-			}
+        }
 
-		}
-		return duplicity
+        return sameSuit
 
-	}
-
-	static boolean isSequenciaDevalores(ArrayList valores) {
-
-		int soma = getSomaValores(valores)
-
-		return (soma - (valores.first() * 5)) == 10
-	}
-
-	ArrayList getValuesFromCards(String[] cards) {
-
-		ArrayList<Integer> valores = new ArrayList()
-
-		for (int i = 0; i < cards.length; i++) {
-			valores.add(baralho.allCards.get(cards[i]))
-		}
-
-		valores.sort()
-		return valores
-	}
-
-	static int getSomaValores(ArrayList valores) {
-		int soma = 0
-
-		valores.each {
-			soma += it
-		}
-
-		return soma
-	}
-
-	boolean isSameSuit(String[] cards) {
-		boolean sameSuit
-
-		String suit = baralho.getSuit(cards[0])
-		cards.each {
-			if (!suit.equals(baralho.getSuit(it))) {
-				sameSuit = false
-			}
-		}
-
-	}
+    }
 }
