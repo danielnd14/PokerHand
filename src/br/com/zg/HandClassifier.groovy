@@ -2,17 +2,19 @@ package br.com.zg
 
 
 class HandClassifier implements PokerClassifier {
-	private PlayingCards baralho
+
+
 	private PokerHand pkHand
 	private List<Integer> valores
-	private String[] cards
+	private List<Card> cards
 
-	HandClassifier(PlayingCards baralho, PokerHand pkHand) {
+	HandClassifier(PokerHand pkHand) {
 
-		this.baralho = baralho
+
 		this.pkHand = pkHand
-		this.cards = pkHand.cards
-		valores = baralho.getValuesFromCards(this.cards)
+		this.cards = pkHand.listCards
+
+		valores = pkHand.getValuesFromCards()
 
 	}
 
@@ -21,12 +23,13 @@ class HandClassifier implements PokerClassifier {
 
 		boolean isRoyalFlush = true
 
-		valores.each {
+		cards.each {
 
-			if (it <= 9) {
+			if (it.value <= 9) {
 				isRoyalFlush = false
 			}
 		}
+
 		isRoyalFlush = isRoyalFlush ? isSequenciaDevalores(valores) : false
 
 		isRoyalFlush = isRoyalFlush ? isSameSuit(cards) : false
@@ -146,21 +149,20 @@ class HandClassifier implements PokerClassifier {
 
 	static boolean isThereDuplicity(List valores) {
 
-		boolean duplicity = false
 
 		firstFor:
 		for (int i = 0; i < valores.size(); i++) {
-			int aux = valores.get(i)
+			int aux = (int) valores.get(i)
 
 			for (int j = i + 1; j < valores.size(); j++) {
 				if (aux == valores.get(j)) {
-					duplicity = true
-					break firstFor
+					return   true
+
 				}
 			}
 
 		}
-		return duplicity
+
 
 	}
 
@@ -181,17 +183,16 @@ class HandClassifier implements PokerClassifier {
 		return soma
 	}
 
-	boolean isSameSuit(String[] cards) {
+	static boolean isSameSuit(List<Card> cards) {
 		boolean sameSuit = true
 
-		String suit = baralho.getSuit(cards[0])
+		String suit = cards.first().naipe
 		cards.each {
-			if (!suit.equals(baralho.getSuit(it))) {
+			if (!suit.equals(it.naipe)) {
 				sameSuit = false
 			}
 
 		}
-
 		return sameSuit
 
 	}

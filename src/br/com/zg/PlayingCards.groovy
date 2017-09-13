@@ -1,18 +1,13 @@
 package br.com.zg
 
-class PlayingCards {
+ class PlayingCards {
 
     private Map allCards
 
     private String[] suits
 
-    private static final PlayingCards instance = new PlayingCards()
 
-    static PlayingCards getInstance() {
-        return instance
-    }
-
-    private PlayingCards() {
+     PlayingCards() {
 
         allCards = [
 
@@ -94,19 +89,17 @@ class PlayingCards {
 
     String getSuit(String card) {
 
-        String retorno
         this.suits.each {
 
             if (it.equals(card.substring(1))) {
-                retorno = it
+                return it
             }
 
         }
 
-        return retorno
     }
 
-    List getValuesFromCards(String[] cards) {
+    List getValuesFromCards(List cards) {
 
         List<Integer> valores = new ArrayList()
 
@@ -116,6 +109,19 @@ class PlayingCards {
 
         valores.sort()
         return valores
+    }
+
+     List getListOfCardsByName(String[] cards){
+
+
+        List<Card> cardList = new ArrayList()
+        cards.each {
+            int value = (int) allCards.get(it)
+            cardList.add(new Card(it.substring(1,2),value))
+
+        }
+
+        return cardList.sort()
     }
 
 

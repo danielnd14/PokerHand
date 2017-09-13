@@ -1,142 +1,116 @@
 package br.com.zg
 
 class PokerHand {
-	private String[] cards
 
-	String[] getCards() {
-		return cards
-	}
-	private ValidHand validHand
+
+	private List<Card> listCards
 	private TypeHand typeHand
+	private PlayingCards playingCards = new PlayingCards()
 
 	PokerHand(String hand) {
 
 		hand = hand.toUpperCase()
+		String[] cards = hand.split(" ")
 
-		this.cards = hand.split(" ")
-
-		if (!Checker.isValidHand(this.cards)) {
-			validHand = ValidHand.INVALID
-		} else {
-			validHand = ValidHand.VALID
-
-			this.typeHand = Checker.whichHand(this)
-		}
-
-	}
-
-	Enum compareWith(PokerHand otherHand) {
-
-		Enum result
-
-		if (this.validHand != ValidHand.VALID || otherHand.validHand != ValidHand.VALID) {
-
-			result = ValidHand.SOME_OF_HAND_IS_INVALID
-
-		} else {
-
-			switch (Checker.isHandEquals(this, otherHand)) {
-
-				case true:
-
-					result = Resultado.DRAW
-
-					break
-
-				case false:
+		this.listCards = getListOfCardsByName(cards)
 
 
-					if (this.typeHand == otherHand.typeHand) {
+		if (!Checker.isValidHand(cards)) {
 
-						result = desempatar(otherHand)
-
-					} else {
-
-						int maior = Math.max(this.typeHand.ordinal(), otherHand.typeHand.ordinal())
-						result = maior == this.typeHand.ordinal() ? Resultado.WIN : Resultado.LOSS
-
-					}
-
-					break
-				default: break
-			}
+			throw new IllegalArgumentException("Alguma das Cartas são invalidas")
 
 		}
 
-		return result
+		this.typeHand = Checker.whichHand(this)
+
 	}
 
-	private Enum desempateNumerico(PokerHand otherHand) {
+	private static List<Card> getListOfCardsByName(String[]cards) {
 
-		Enum desempate = Resultado.DRAW
+		List<Card> listCards = new ArrayList()
 
-		PlayingCards baralho = PlayingCards.getInstance()
+		cards.each {
+			listCards.add(new Card(it))
+		}
 
-		List valueActualHand = baralho.getValuesFromCards(this.cards)
+		return null
+	}
 
-		List valueOtherHand = baralho.getValuesFromCards(otherHand.cards)
+	Resultado compareWith(PokerHand otherHand) {
 
-		for (int i = valueActualHand.size() - 1; i >= 0; i--) {
+		if (this.typeHand == otherHand.typeHand) {
+
+			return desempatar(otherHand)
+
+		} else {
+
+			int maior = Math.max(this.typeHand.ordinal(), otherHand.typeHand.ordinal())
+			return maior == this.typeHand.ordinal() ? Resultado.WIN : Resultado.LOSS
+		}
 
 
-			if (valueActualHand.get(i) != valueOtherHand.get(i)) {
+	}
 
-				int maior = Math.max(valueActualHand.get(i), valueOtherHand.get(i))
-				desempate = maior == valueActualHand.get(i) ? Resultado.WIN : Resultado.LOSS
-				break
+	private Resultado desempateNumerico(PokerHand otherHand) {
+
+		Resultado desempate = Resultado.DRAW
+
+		for (int i = listCards.size() - 1; i >= 0; i--) {
+
+
+			if (listCards.get(i) != otherHand.listCards.get(i)) {
+
+				int maior = Math.max(this.listCards.get(i).value, otherHand.listCards.get(i).value)
+				return maior == this.listCards.get(i).value ? Resultado.WIN : Resultado.LOSS
+
 			}
 		}
 		return desempate
 	}
 
-	Enum desempatar(PokerHand otherHand) {
+	private Resultado desempatar(PokerHand otherHand) {
 
-		Enum desempate = Resultado.DRAW
 
 		switch (this.typeHand) {
 
 			case TypeHand.UM_PAR:
 			case TypeHand.DOIS_PARES:
-				desempate = desempatarPares(otherHand)
+				return desempatarPares(otherHand)
 				break
 			default:
-				desempate = desempateNumerico(otherHand)
+				return desempateNumerico(otherHand)
 				break
 		}
-		return desempate
+
 	}
 
-	static byte getFirstValueDuplicated(List valores) {
+	static int getFirstValueDuplicated(List valores) {
 
-		byte value = -1
-
-		firstFor:
 		for (int i = 0; i < valores.size(); i++) {
-			byte aux = (byte) valores.get(i)
+			int aux = (int) valores.get(i)
 
 			for (int j = i + 1; j < valores.size(); j++) {
 				if (aux == valores.get(j)) {
-					value = (byte) valores.get(j)
-					break firstFor
+					return (int) valores.get(j)
 				}
 			}
 
 		}
-		return value
+
 	}
 
-	static byte getMaiorValueDuplicated(List valores) {
+	 static int getMaiorCartaDuplicada(List<Card> cards) {
 
-		byte[] value = new byte[2]
+		int[] value = new int[2]
 		int iAux = 0
 
+		for (int i = 0; i < cards.size(); i++) {
+			int aux = cards.get(i).value
 
-		for (int i = 0; i < valores.size(); i++) {
-			byte aux = (byte) valores.get(i)
+			for (int j = i + 1; j < cards.size(); j++) {
 
-			for (int j = i + 1; j < valores.size(); j++) {
-				if (aux == valores.get(j)) {
-					value[iAux] = (byte) valores.get(j)
+				if (aux == cards.get(j)) {
+					value[iAux] = cards.get(j).value
 					iAux++
 					break
 				}
@@ -147,36 +121,31 @@ class PokerHand {
 		return Math.max(value[0], value[1])
 	}
 
-	Enum desempatarPares(PokerHand otherHand) {
+	Resultado desempatarPares(PokerHand otherHand) {
 
-		Enum desempate = Resultado.DRAW
+		Resultado desempate = Resultado.DRAW
 
-		PlayingCards baralho = PlayingCards.getInstance()
 
-		List valueActualHand = baralho.getValuesFromCards(this.cards)
+		List valueActualHand = getValuesFromCards()
 
-		List valueOtherHand = baralho.getValuesFromCards(otherHand.cards)
+		List valueOtherHand = otherHand.getValuesFromCards()
 
-		byte parActual
-		byte parOther
+		int parActual
+		int parOther
 
-		switch (this.typeHand) {
-			case TypeHand.UM_PAR:
+		if (this.typeHand == TypeHand.UM_PAR) {
 
-				parActual = getFirstValueDuplicated(valueActualHand)
-				parOther = getFirstValueDuplicated(valueOtherHand)
+			parActual = getFirstValueDuplicated(valueActualHand)
+			parOther = getFirstValueDuplicated(valueOtherHand)
+			
+		} else {
 
-				break
-			case TypeHand.DOIS_PARES:
-				parActual = getMaiorValueDuplicated(valueActualHand)
-				parOther = getMaiorValueDuplicated(valueOtherHand)
-
-				break
-
+			parActual = getMaiorCartaDuplicada(valueActualHand)
+			parOther = getMaiorCartaDuplicada(valueOtherHand)
 		}
 
 		if (parActual != parOther) {
-			byte maior = Math.max(parActual, parOther)
+			int maior = Math.max(parActual, parOther)
 			desempate = maior == parActual ? Resultado.WIN : Resultado.LOSS
 		}
 
@@ -184,6 +153,22 @@ class PokerHand {
 
 		return desempate
 
+	}
+
+	protected List<Integer> getValuesFromCards() {
+
+		List<Integer> valores = new ArrayList()
+
+		listCards.each {
+			valores.add(it.value)
+		}
+
+		valores.sort()
+		return valores
+	}
+
+	List<Card> getListCards() {
+		return listCards
 	}
 
 

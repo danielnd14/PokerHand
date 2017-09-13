@@ -2,7 +2,7 @@ package br.com.zg
 
 final class Checker {
 
-    private static PlayingCards baralho = PlayingCards.instance
+    private static PlayingCards baralho = new PlayingCards()
 
     static boolean isHandEquals(PokerHand actualHand, PokerHand otherHand) {
 
@@ -34,55 +34,52 @@ final class Checker {
         return valid
     }
 
-    static Enum whichHand(PokerHand pkHand) {
+    static TypeHand whichHand(PokerHand pkHand) {
 
-        Enum retorno
 
-        HandClassifier handClassifier = new HandClassifier(baralho, pkHand)
+        HandClassifier handClassifier = new HandClassifier(pkHand)
 
         if (handClassifier.isRoyal()) {
 
-            retorno = TypeHand.ROYAL_FLUSH
+            return TypeHand.ROYAL_FLUSH
 
         } else if (handClassifier.isStraight()) {
 
-            retorno = TypeHand.STRAIGHT_FLUSH
+            return TypeHand.STRAIGHT_FLUSH
 
         } else if (handClassifier.isQuadra()) {
 
-            retorno = TypeHand.QUADRA
+            return TypeHand.QUADRA
 
         } else if (handClassifier.isFull()) {
 
-            retorno = TypeHand.FULL_HOUSE
+            return TypeHand.FULL_HOUSE
 
         } else if (handClassifier.isFlush()) {
 
-            retorno = TypeHand.FLUSH
+            return  TypeHand.FLUSH
 
         } else if (handClassifier.isSequence()) {
 
-            retorno = TypeHand.SEQUENCIA
+            return TypeHand.SEQUENCIA
 
         } else if (handClassifier.isTrinca()) {
 
-            retorno = TypeHand.TRINCA
+            return TypeHand.TRINCA
 
         } else if (handClassifier.is2pares()) {
 
-            retorno = TypeHand.DOIS_PARES
+            return TypeHand.DOIS_PARES
 
         } else if (handClassifier.is1Par()) {
 
-            retorno = TypeHand.UM_PAR
+            return  TypeHand.UM_PAR
 
         } else if (handClassifier.isCartaAlta()) {
 
-            retorno = TypeHand.CARTA_ALTA
+            return  TypeHand.CARTA_ALTA
 
         }
-
-        return retorno
 
     }
 
