@@ -2,85 +2,89 @@ package br.com.zg
 
 final class Checker {
 
-	private static PlayingCards baralho = PlayingCards.instance
+    private static PlayingCards baralho = PlayingCards.instance
 
-	static boolean isHandEquals(PokerHand actualHand, PokerHand otherHand) {
+    static boolean isHandEquals(PokerHand actualHand, PokerHand otherHand) {
 
-		boolean retorno = true
+        boolean retorno = true
 
-		actualHand.cards.each {
+        actualHand.cards.each {
 
-			if (!otherHand.cards.contains(it)) {
-				retorno = false
-			}
+            if (!otherHand.cards.contains(it)) {
+                retorno = false
+            }
 
-		}
+        }
 
-		return retorno
-	}
+        return retorno
+    }
 
-	static boolean isValidHand(String[] cards) {
+    static boolean isValidHand(String[] cards) {
 
-		boolean valid = true
-		cards.each {
-			if (!baralho.exists(it)) {
-				valid = false
-			}
-		}
-		return valid
-	}
+        boolean valid = cards.size() == 5
 
-	static Enum whichHand(PokerHand pkHand) {
+        if (valid) {
+            cards.each {
+                if (!baralho.exists(it)) {
+                    valid = false
+                }
+            }
+        }
 
-		Enum retorno
+        return valid
+    }
 
-		HandClassifier handClassifier = new HandClassifier(baralho,pkHand)
+    static Enum whichHand(PokerHand pkHand) {
 
-		if (handClassifier.isRoyal()) {
+        Enum retorno
 
-			retorno = TypeHand.ROYAL_FLUSH
+        HandClassifier handClassifier = new HandClassifier(baralho, pkHand)
 
-		} else if (handClassifier.isStraight()) {
+        if (handClassifier.isRoyal()) {
 
-			retorno = TypeHand.STRAIGHT_FLUSH
+            retorno = TypeHand.ROYAL_FLUSH
 
-		} else if (handClassifier.isQuadra()) {
+        } else if (handClassifier.isStraight()) {
 
-			retorno = TypeHand.QUADRA
+            retorno = TypeHand.STRAIGHT_FLUSH
 
-		} else if (handClassifier.isFull()) {
+        } else if (handClassifier.isQuadra()) {
 
-			retorno = TypeHand.FULL_HOUSE
+            retorno = TypeHand.QUADRA
 
-		} else if (handClassifier.isFlush()) {
+        } else if (handClassifier.isFull()) {
 
-			retorno = TypeHand.FLUSH
+            retorno = TypeHand.FULL_HOUSE
 
-		} else if (handClassifier.isSequence()) {
+        } else if (handClassifier.isFlush()) {
 
-			retorno = TypeHand.SEQUENCIA
+            retorno = TypeHand.FLUSH
 
-		} else if (handClassifier.isTrinca()) {
+        } else if (handClassifier.isSequence()) {
 
-			retorno = TypeHand.TRINCA
+            retorno = TypeHand.SEQUENCIA
 
-		} else if (handClassifier.is2pares()) {
+        } else if (handClassifier.isTrinca()) {
 
-			retorno = TypeHand.DOIS_PARES
+            retorno = TypeHand.TRINCA
 
-		} else if (handClassifier.is1Par()) {
+        } else if (handClassifier.is2pares()) {
 
-			retorno = TypeHand.UM_PAR
+            retorno = TypeHand.DOIS_PARES
 
-		} else if (handClassifier.isCartaAlta()) {
+        } else if (handClassifier.is1Par()) {
 
-			retorno = TypeHand.CARTA_ALTA
+            retorno = TypeHand.UM_PAR
 
-		}
+        } else if (handClassifier.isCartaAlta()) {
 
-		return retorno
+            retorno = TypeHand.CARTA_ALTA
 
-	}
+        }
+
+        return retorno
+
+    }
 
 
 }

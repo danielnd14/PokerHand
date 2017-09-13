@@ -60,5 +60,7 @@ class PokerHandTest extends Specification {
 		"2H 2H 2H AH AS" | "2C 2C 2C JC JS" || Resultado.WIN
 		"2H 2H 5H AH AS" | "2C 2C 6C AC AS" || Resultado.LOSS
 		"2H 2H 5H AH AS" | "2C 2C 6C zC AS" || ValidHand.SOME_OF_HAND_IS_INVALID
+		"2H 2H 5H AH AS" | "2C 2C 6C AC AS 2H" || ValidHand.SOME_OF_HAND_IS_INVALID
+		"2H 2H 5H AH AS" | "2C 2C 6C AS" || ValidHand.SOME_OF_HAND_IS_INVALID
 	}
 }

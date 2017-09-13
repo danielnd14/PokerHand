@@ -2,7 +2,7 @@ package br.com.zg
 
 class PlayingCards {
 
-    private HashMap allCards
+    private Map allCards
 
     private String[] suits
 

@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="12f7545c-32c9-413d-8442-97438a6a07bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PokerHand.iml" afterPath="$PROJECT_DIR$/PokerHand.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/com/zg/HandClassifier.groovy" afterPath="$PROJECT_DIR$/src/br/com/zg/HandClassifier.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TESTE/br/com/zg/PokerHandTest.groovy" afterPath="$PROJECT_DIR$/TESTE/br/com/zg/PokerHandTest.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/com/zg/Checker.groovy" afterPath="$PROJECT_DIR$/src/br/com/zg/Checker.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/com/zg/PlayingCards.groovy" afterPath="$PROJECT_DIR$/src/br/com/zg/PlayingCards.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/com/zg/PokerHand.groovy" afterPath="$PROJECT_DIR$/src/br/com/zg/PokerHand.groovy" />
     </list>
@@ -21,18 +21,18 @@
       <file leaf-file-name="PokerHand.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerHand.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="54" />
+            <state relative-caret-position="1395">
+              <caret line="93" column="33" lean-forward="true" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PokerHandTest.groovy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PokerHandTest.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TESTE/br/com/zg/PokerHandTest.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-701">
-              <caret line="7" column="139" lean-forward="false" selection-start-line="7" selection-start-column="139" selection-end-line="7" selection-end-column="139" />
+            <state relative-caret-position="930">
+              <caret line="62" column="45" lean-forward="false" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
               <folding>
                 <element signature="e#19#50#0" expanded="true" />
               </folding>
@@ -40,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/br/com/zg/Main.groovy">
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="56" lean-forward="false" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+            <state relative-caret-position="-7335">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -53,8 +53,8 @@
       <file leaf-file-name="Checker.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/Checker.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+            <state relative-caret-position="165">
+              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -63,8 +63,8 @@
       <file leaf-file-name="HandClassifier.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/HandClassifier.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2718">
-              <caret line="151" column="48" lean-forward="true" selection-start-line="151" selection-start-column="48" selection-end-line="151" selection-end-column="48" />
+            <state relative-caret-position="2265">
+              <caret line="151" column="48" lean-forward="false" selection-start-line="151" selection-start-column="48" selection-end-line="151" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -73,8 +73,8 @@
       <file leaf-file-name="PlayingCards.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/PlayingCards.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="110" column="32" lean-forward="false" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+            <state relative-caret-position="75">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,7 +83,7 @@
       <file leaf-file-name="PokerClassifier.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerClassifier.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="330">
               <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
               <folding />
             </state>
@@ -93,7 +93,7 @@
       <file leaf-file-name="Resultado.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/Resultado.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="30">
               <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
               <folding />
             </state>
@@ -103,7 +103,7 @@
       <file leaf-file-name="TypeHand.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/TypeHand.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="30">
               <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
               <folding />
             </state>
@@ -113,7 +113,7 @@
       <file leaf-file-name="ValidHand.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/zg/ValidHand.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="60">
               <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
               <folding />
             </state>
@@ -147,11 +147,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/br/com/zg/Classifier.groovy" />
         <option value="$PROJECT_DIR$/src/br/com/zg/PokerClassifier.groovy" />
-        <option value="$PROJECT_DIR$/src/br/com/zg/Checker.groovy" />
         <option value="$PROJECT_DIR$/src/br/com/zg/Main.groovy" />
         <option value="$PROJECT_DIR$/src/br/com/zg/HandClassifier.groovy" />
         <option value="$PROJECT_DIR$/src/br/com/zg/PlayingCards.groovy" />
         <option value="$PROJECT_DIR$/src/br/com/zg/PokerHand.groovy" />
+        <option value="$PROJECT_DIR$/src/br/com/zg/Checker.groovy" />
         <option value="$PROJECT_DIR$/TESTE/br/com/zg/PokerHandTest.groovy" />
       </list>
     </option>
@@ -183,9 +183,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -193,6 +192,11 @@
             <path>
               <item name="PokerHand" type="b2602c69:ProjectViewProjectNode" />
               <item name="PokerHand" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PokerHand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PokerHand" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PokerHand" type="b2602c69:ProjectViewProjectNode" />
@@ -224,6 +228,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -436,28 +441,11 @@
       <workItem from="1505137888931" duration="22164000" />
       <workItem from="1505176254362" duration="12664000" />
       <workItem from="1505222319428" duration="16698000" />
+      <workItem from="1505262707302" duration="977000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PokerHandTest - 2017.09.12 at 15h 07m 53s.xml">
-      <configuration name="PokerHandTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerHandTest - 2017.09.12 at 15h 09m 19s.xml">
-      <configuration name="PokerHandTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerHandTest - 2017.09.12 at 15h 15m 39s.xml">
-      <configuration name="PokerHandTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerHandTest - 2017.09.12 at 15h 16m 06s.xml">
-      <configuration name="PokerHandTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerHandTest - 2017.09.12 at 15h 17m 35s.xml">
-      <configuration name="PokerHandTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PokerHandTest - 2017.09.12 at 15h 24m 54s.xml">
-      <configuration name="PokerHandTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PokerHandTest - 2017.09.12 at 15h 27m 45s.xml">
       <configuration name="PokerHandTest" configurationId="JUnit" />
     </history-entry>
@@ -470,32 +458,47 @@
     <history-entry file="PokerHandTest - 2017.09.12 at 15h 34m 00s.xml">
       <configuration name="PokerHandTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PokerHandTest - 2017.09.12 at 21h 32m 31s.xml">
+      <configuration name="PokerHandTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerHandTest - 2017.09.12 at 21h 34m 11s.xml">
+      <configuration name="PokerHandTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerHandTest - 2017.09.12 at 21h 43m 22s.xml">
+      <configuration name="PokerHandTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerHandTest - 2017.09.12 at 21h 45m 34s.xml">
+      <configuration name="PokerHandTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerHandTest - 2017.09.12 at 21h 46m 26s.xml">
+      <configuration name="PokerHandTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PokerHandTest - 2017.09.12 at 21h 47m 00s.xml">
+      <configuration name="PokerHandTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51526000" />
+    <option name="totallyTimeSpent" value="52503000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="-11" width="1881" height="1092" extended-state="6" />
+    <frame x="40" y="-11" width="1366" height="738" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32799146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32784185" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46047008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22734761" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15531336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15757576" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -506,7 +509,10 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,6 +528,80 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerHand.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="54" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Checker.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/HandClassifier.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2265">
+          <caret line="151" column="48" lean-forward="true" selection-start-line="151" selection-start-column="48" selection-end-line="151" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/PlayingCards.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="110" column="32" lean-forward="false" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerClassifier.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Resultado.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/TypeHand.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/ValidHand.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TESTE/br/com/zg/PokerHandTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="139" lean-forward="false" selection-start-line="7" selection-start-column="139" selection-end-line="7" selection-end-column="139" />
+          <folding>
+            <element signature="e#19#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerHand.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="864">
@@ -546,14 +626,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Main.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Main.groovy" />
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerClassifier.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -661,7 +734,7 @@
     <entry file="file://$PROJECT_DIR$/src/Main.groovy" />
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/TypeHand.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="30">
           <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
           <folding />
         </state>
@@ -669,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/ValidHand.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="60">
           <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
           <folding />
         </state>
@@ -678,67 +751,76 @@
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/teste.java" />
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/Resultado.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="30">
           <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Checker.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/zg/HandClassifier.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2718">
-          <caret line="151" column="48" lean-forward="true" selection-start-line="151" selection-start-column="48" selection-end-line="151" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/zg/PlayingCards.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="110" column="32" lean-forward="false" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerClassifier.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
+        <state relative-caret-position="330">
           <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Main.groovy" />
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/HandClassifier.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2265">
+          <caret line="151" column="48" lean-forward="false" selection-start-line="151" selection-start-column="48" selection-end-line="151" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/PlayingCards.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PokerHand.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/zg/PokerHand.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="54" />
+        <state relative-caret-position="1395">
+          <caret line="93" column="33" lean-forward="true" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Main.groovy">
+    <entry file="file://$PROJECT_DIR$/src/br/com/zg/Checker.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="56" lean-forward="false" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+        <state relative-caret-position="165">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TESTE/br/com/zg/PokerHandTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-701">
-          <caret line="7" column="139" lean-forward="false" selection-start-line="7" selection-start-column="139" selection-end-line="7" selection-end-column="139" />
+        <state relative-caret-position="930">
+          <caret line="62" column="45" lean-forward="false" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
           <folding>
             <element signature="e#19#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7335">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

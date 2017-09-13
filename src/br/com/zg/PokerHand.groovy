@@ -2,6 +2,10 @@ package br.com.zg
 
 class PokerHand {
 	private String[] cards
+
+	String[] getCards() {
+		return cards
+	}
 	private ValidHand validHand
 	private TypeHand typeHand
 
