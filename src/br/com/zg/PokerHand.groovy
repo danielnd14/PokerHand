@@ -5,9 +5,9 @@ class PokerHand {
 
 	private List<Card> listCards
 	private TypeHand typeHand
-	private PlayingCards playingCards = new PlayingCards()
 
-	PokerHand(String hand) {
+
+	PokerHand(String hand) throws IllegalArgumentException {
 
 		hand = hand.toUpperCase()
 		String[] cards = hand.split(" ")
@@ -15,17 +15,16 @@ class PokerHand {
 		this.listCards = getListOfCardsByName(cards)
 
 
-		if (!Checker.isValidHand(cards)) {
-
-			throw new IllegalArgumentException("Alguma das Cartas são invalidas")
-
+		if (listCards.size() != 5) {
+			throw new IllegalArgumentException("Quantidade de cartas invalida")
 		}
 
-		this.typeHand = Checker.whichHand(this)
+		HandClassifier handClassifier = new HandClassifier(this.listCards)
+		this.typeHand = handClassifier.getTypeHand()
 
 	}
 
-	private static List<Card> getListOfCardsByName(String[]cards) {
+	private static List<Card> getListOfCardsByName(String[] cards) {
 
 		List<Card> listCards = new ArrayList()
 
@@ -33,7 +32,7 @@ class PokerHand {
 			listCards.add(new Card(it))
 		}
 
-		return null
+		return listCards.sort()
 	}
 
 	Resultado compareWith(PokerHand otherHand) {
@@ -56,7 +55,6 @@ class PokerHand {
 		Resultado desempate = Resultado.DRAW
 
 		for (int i = listCards.size() - 1; i >= 0; i--) {
-
 
 			if (listCards.get(i) != otherHand.listCards.get(i)) {
 
@@ -99,7 +97,7 @@ class PokerHand {
 
 	}
 
-	 static int getMaiorCartaDuplicada(List<Card> cards) {
+	static int getMaiorCartaDuplicada(List<Card> cards) {
 
 		int[] value = new int[2]
 		int iAux = 0
@@ -137,7 +135,7 @@ class PokerHand {
 
 			parActual = getFirstValueDuplicated(valueActualHand)
 			parOther = getFirstValueDuplicated(valueOtherHand)
-			
+
 		} else {
 
 			parActual = getMaiorCartaDuplicada(valueActualHand)

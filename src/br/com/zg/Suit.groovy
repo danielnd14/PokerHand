@@ -2,9 +2,9 @@ package br.com.zg
 
 enum Suit {
 
-	ESPADA,
-	COPAS,
-	OUROS,
-	PAUS
+	SPADES,
+	HEARTS,
+	DIAMONDS,
+	CLUBS
 
 }

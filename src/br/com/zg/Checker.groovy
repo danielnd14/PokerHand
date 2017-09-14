@@ -39,47 +39,7 @@ final class Checker {
 
         HandClassifier handClassifier = new HandClassifier(pkHand)
 
-        if (handClassifier.isRoyal()) {
 
-            return TypeHand.ROYAL_FLUSH
-
-        } else if (handClassifier.isStraight()) {
-
-            return TypeHand.STRAIGHT_FLUSH
-
-        } else if (handClassifier.isQuadra()) {
-
-            return TypeHand.QUADRA
-
-        } else if (handClassifier.isFull()) {
-
-            return TypeHand.FULL_HOUSE
-
-        } else if (handClassifier.isFlush()) {
-
-            return  TypeHand.FLUSH
-
-        } else if (handClassifier.isSequence()) {
-
-            return TypeHand.SEQUENCIA
-
-        } else if (handClassifier.isTrinca()) {
-
-            return TypeHand.TRINCA
-
-        } else if (handClassifier.is2pares()) {
-
-            return TypeHand.DOIS_PARES
-
-        } else if (handClassifier.is1Par()) {
-
-            return  TypeHand.UM_PAR
-
-        } else if (handClassifier.isCartaAlta()) {
-
-            return  TypeHand.CARTA_ALTA
-
-        }
 
     }
 
