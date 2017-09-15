@@ -3,6 +3,7 @@ package br.com.zg
 final class HandClassifier implements PokerClassifier {
 
 
+
 	private Map<CardValue, List<Card>> groupValue
 	private Map<Suit, List<Card>> groupNaipe
 	private List<Card> cardList
@@ -128,6 +129,10 @@ final class HandClassifier implements PokerClassifier {
 
 		return groupValue.values()
 				.findAll { List<Card> grupo -> grupo.size() == tamanho }.size() == quantidade
+	}
+
+	Map<CardValue, List<Card>> getGroupValue() {
+		return groupValue
 	}
 
 

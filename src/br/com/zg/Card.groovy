@@ -5,15 +5,16 @@ class Card implements Comparable<Card> {
 	private Suit naipe
 	private CardValue value
 
-	Card(String id) throws IllegalArgumentException{
+	Card(String id) throws IllegalArgumentException,StringIndexOutOfBoundsException{
 
 		setNaipe(id)
 		setValue(id)
 	}
 
-	private setNaipe(String id) {
+	private setNaipe(String id) throws StringIndexOutOfBoundsException{
 
 		String tipo = id.substring(1, 2)
+
 		Map<String, Suit> mNaipes = ["S": Suit.SPADES, "H": Suit.HEARTS, "D": Suit.DIAMONDS, "C": Suit.CLUBS]
 
 		if (mNaipes.containsKey(tipo)) {
@@ -28,7 +29,7 @@ class Card implements Comparable<Card> {
 
 	}
 
-	private setValue(String id) {
+	private setValue(String id) throws StringIndexOutOfBoundsException {
 
 		String value = id.substring(0, 1)
 		String[] numeros = "2".."9"

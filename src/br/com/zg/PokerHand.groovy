@@ -4,7 +4,8 @@ class PokerHand {
 
 
 	private List<Card> listCards
-	private TypeHand typeHand
+	TypeHand typeHand
+	private Map<CardValue, List<Card>> groupValue
 
 
 	PokerHand(String hand) throws IllegalArgumentException {
@@ -20,8 +21,8 @@ class PokerHand {
 		}
 
 		HandClassifier handClassifier = new HandClassifier(this.listCards)
-		this.typeHand = handClassifier.getTypeHand()
-
+		this.typeHand = handClassifier.typeHand
+		this.groupValue = handClassifier.groupValue
 	}
 
 	private static List<Card> getListOfCardsByName(String[] cards) {
@@ -31,11 +32,12 @@ class PokerHand {
 		cards.each {
 			listCards.add(new Card(it))
 		}
-
 		return listCards.sort()
 	}
 
 	Resultado compareWith(PokerHand otherHand) {
+
+		//println(this.typeHand.toString() + " -VS- " + otherHand.typeHand.toString())
 
 		if (this.typeHand == otherHand.typeHand) {
 
@@ -50,124 +52,48 @@ class PokerHand {
 
 	}
 
-	private Resultado desempateNumerico(PokerHand otherHand) {
-
-		Resultado desempate = Resultado.DRAW
-
-		for (int i = listCards.size() - 1; i >= 0; i--) {
-
-			if (listCards.get(i) != otherHand.listCards.get(i)) {
-
-				int maior = Math.max(this.listCards.get(i).value, otherHand.listCards.get(i).value)
-				return maior == this.listCards.get(i).value ? Resultado.WIN : Resultado.LOSS
-
-			}
-		}
-		return desempate
-	}
 
 	private Resultado desempatar(PokerHand otherHand) {
 
+		List<CardValue> listA = new ArrayList()
+		List<CardValue> listB = new ArrayList()
 
-		switch (this.typeHand) {
+		groupValue.values()
+				.findAll { List<Card> grupo -> grupo.size() > 1 }.reverse().each { listA << it.value.first() }
 
-			case TypeHand.UM_PAR:
-			case TypeHand.DOIS_PARES:
-				return desempatarPares(otherHand)
-				break
-			default:
-				return desempateNumerico(otherHand)
-				break
+		otherHand.groupValue.values()
+				.findAll { List<Card> grupo -> grupo.size() > 1 }.reverse().each { listB << it.value.first() }
+
+		Resultado result = comparar2ListasEmpatadas(listA,listB)
+
+		if(result == Resultado.DRAW){
+
+			listA = new ArrayList<CardValue>()
+			listB = new ArrayList<CardValue>()
+
+			groupValue.values()
+					.findAll { List<Card> grupo -> grupo.size() == 1 }.reverse().each { listA << it.value.first() }
+
+			otherHand.groupValue.values()
+					.findAll { List<Card> grupo -> grupo.size() == 1 }.reverse().each { listB << it.value.first() }
+
+			return comparar2ListasEmpatadas(listA, listB)
 		}
-
+		return result
 	}
 
-	static int getFirstValueDuplicated(List valores) {
 
-		for (int i = 0; i < valores.size(); i++) {
-			int aux = (int) valores.get(i)
+	private static comparar2ListasEmpatadas(List<CardValue> listA, List<CardValue>listB){
 
-			for (int j = i + 1; j < valores.size(); j++) {
-				if (aux == valores.get(j)) {
-					return (int) valores.get(j)
-				}
+		for (int i = 0; i < listA.size(); i++) {
+
+			if (listA.get(i).ordinal() < listB.get(i).ordinal()) {
+				return Resultado.LOSS
+			} else if (listA.get(i).ordinal() > listB.get(i).ordinal()) {
+				return Resultado.WIN
 			}
-
 		}
-
+		return Resultado.DRAW
 	}
-
-	static int getMaiorCartaDuplicada(List<Card> cards) {
-
-		int[] value = new int[2]
-		int iAux = 0
-
-		for (int i = 0; i < cards.size(); i++) {
-			int aux = cards.get(i).value
-
-			for (int j = i + 1; j < cards.size(); j++) {
-
-				if (aux == cards.get(j)) {
-					value[iAux] = cards.get(j).value
-					iAux++
-					break
-				}
-			}
-
-		}
-
-		return Math.max(value[0], value[1])
-	}
-
-	Resultado desempatarPares(PokerHand otherHand) {
-
-		Resultado desempate = Resultado.DRAW
-
-
-		List valueActualHand = getValuesFromCards()
-
-		List valueOtherHand = otherHand.getValuesFromCards()
-
-		int parActual
-		int parOther
-
-		if (this.typeHand == TypeHand.UM_PAR) {
-
-			parActual = getFirstValueDuplicated(valueActualHand)
-			parOther = getFirstValueDuplicated(valueOtherHand)
-
-		} else {
-
-			parActual = getMaiorCartaDuplicada(valueActualHand)
-			parOther = getMaiorCartaDuplicada(valueOtherHand)
-		}
-
-		if (parActual != parOther) {
-			int maior = Math.max(parActual, parOther)
-			desempate = maior == parActual ? Resultado.WIN : Resultado.LOSS
-		}
-
-		desempate = desempate == Resultado.DRAW ? desempateNumerico(otherHand) : desempate
-
-		return desempate
-
-	}
-
-	protected List<Integer> getValuesFromCards() {
-
-		List<Integer> valores = new ArrayList()
-
-		listCards.each {
-			valores.add(it.value)
-		}
-
-		valores.sort()
-		return valores
-	}
-
-	List<Card> getListCards() {
-		return listCards
-	}
-
 
 }

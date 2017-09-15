@@ -11,10 +11,10 @@ enum CardValue {
 	EIGHT,
 	NINE,
 	TEN,
-	ELEVEN,
-	TWELVE,
-	THIRTEEN,
-	FOURTEEN,
+	VALETE,
+	QUEEN,
+	KING,
+	ACE,
 
 
 }

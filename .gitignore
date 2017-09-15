@@ -10,6 +10,7 @@ out
 *.ipr
 *.iws
 .idea
+.idea/workspace.xml
 .*.swp
 *.class
 /bin
