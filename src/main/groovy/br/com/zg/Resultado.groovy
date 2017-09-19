@@ -1,5 +1,5 @@
 package br.com.zg
 
 enum Resultado {
-	WIN,LOSS,DRAW
+	WIN, LOSS, DRAW
 }

@@ -4,17 +4,17 @@ class Card implements Comparable<Card> {
 
 	private Suit naipe
 	private CardValue value
-	static 	Map<String, Suit> mNaipes = ["S": Suit.SPADES, "H": Suit.HEARTS, "D": Suit.DIAMONDS, "C": Suit.CLUBS]
+	static Map<String, Suit> mNaipes = ["S": Suit.SPADES, "H": Suit.HEARTS, "D": Suit.DIAMONDS, "C": Suit.CLUBS]
 	static String[] numeros = "2".."9"
 	static String[] letras = ["T", "J", "Q", "K", "A"]
 
-	Card(String id) throws IllegalArgumentException,StringIndexOutOfBoundsException{
+	Card(String id) throws IllegalArgumentException, StringIndexOutOfBoundsException {
 
 		setNaipe(id)
 		setValue(id)
 	}
 
-	private setNaipe(String id) throws StringIndexOutOfBoundsException{
+	private setNaipe(String id) throws StringIndexOutOfBoundsException {
 
 		String tipo = id.substring(1, 2)
 

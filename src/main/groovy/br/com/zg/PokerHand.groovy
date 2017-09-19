@@ -1,8 +1,10 @@
 package br.com.zg
 
+import br.com.zg.classifier.HandClassifier
+
 class PokerHand {
 
-	private List<Card> listCards
+	private List<Card> listOfCards
 	HandType typeHand
 	private Map<CardValue, List<Card>> groupValue
 
@@ -12,15 +14,18 @@ class PokerHand {
 		hand = hand.toUpperCase()
 		String[] cards = hand.split(" ")
 
-		this.listCards = getListOfCardsByName(cards)
+		this.listOfCards = getListOfCardsByName(cards)
 
-		if (listCards.size() != 5) {
+		if (listOfCards.size() != 5) {
 			throw new IllegalArgumentException("Quantidade de cartas invalida")
 		}
 
-		HandClassifier handClassifier = new HandClassifier(this.listCards)
-		this.typeHand = handClassifier.handType
-		this.groupValue = handClassifier.groupValue
+
+		HandClassifier handClassifier = new HandClassifier()
+
+		this.typeHand = handClassifier.getHandType(this.listOfCards)
+
+		this.groupValue = handClassifier.getGroupValue(this.listOfCards)
 	}
 
 	private static List<Card> getListOfCardsByName(String[] cards) {
@@ -56,7 +61,7 @@ class PokerHand {
 
 		List<CardValue> listA = getListaParaDesempate(this)
 		List<CardValue> listB = getListaParaDesempate(otherHand)
-		
+
 		for (int i = 0; i < listA.size(); i++) {
 
 			if (listA.get(i).ordinal() < listB.get(i).ordinal()) {
@@ -82,8 +87,9 @@ class PokerHand {
 		return cardValueList
 
 	}
+
 	List<Card> getListCards() {
-		return listCards
+		return listOfCards
 	}
 
 }
