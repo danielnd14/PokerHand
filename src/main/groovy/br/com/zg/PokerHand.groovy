@@ -54,13 +54,9 @@ class PokerHand {
 
 	private Resultado desempatar(PokerHand otherHand) {
 
-		List<CardValue> listA
-		List<CardValue> listB
-
-		listA = getListaParaDesempate(this)
-		listB = getListaParaDesempate(otherHand)
-
-
+		List<CardValue> listA = getListaParaDesempate(this)
+		List<CardValue> listB = getListaParaDesempate(otherHand)
+		
 		for (int i = 0; i < listA.size(); i++) {
 
 			if (listA.get(i).ordinal() < listB.get(i).ordinal()) {
