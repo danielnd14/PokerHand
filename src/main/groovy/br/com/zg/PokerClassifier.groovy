@@ -16,9 +16,9 @@ package br.com.zg
 
 	boolean isTrinca()
 
-	boolean is2pares()
+	boolean isDoisPares()
 
-	boolean is1Par()
+	boolean isPar()
 
 	boolean isCartaAlta()
 

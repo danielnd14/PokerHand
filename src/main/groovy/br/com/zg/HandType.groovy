@@ -1,6 +1,6 @@
 package br.com.zg
 
-enum TypeHand {
+enum HandType {
 	CARTA_ALTA,
 	UM_PAR,
 	DOIS_PARES,

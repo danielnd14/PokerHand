@@ -66,12 +66,12 @@ final class HandClassifier implements PokerClassifier {
 	}
 
 	@Override
-	boolean is2pares() {
+	boolean isDoisPares() {
 		return temGrupos(2, 2)
 	}
 
 	@Override
-	boolean is1Par() {
+	boolean isPar() {
 		return temGrupos(1, 2)
 	}
 
@@ -80,47 +80,47 @@ final class HandClassifier implements PokerClassifier {
 		return true
 	}
 
-	final TypeHand getTypeHand() {
+	final HandType getHandType() {
 
 		if (isRoyal()) {
 
-			return TypeHand.ROYAL_FLUSH
+			return HandType.ROYAL_FLUSH
 
 		} else if (isStraight()) {
 
-			return TypeHand.STRAIGHT_FLUSH
+			return HandType.STRAIGHT_FLUSH
 
 		} else if (isQuadra()) {
 
-			return TypeHand.QUADRA
+			return HandType.QUADRA
 
 		} else if (isFull()) {
 
-			return TypeHand.FULL_HOUSE
+			return HandType.FULL_HOUSE
 
 		} else if (isFlush()) {
 
-			return TypeHand.FLUSH
+			return HandType.FLUSH
 
 		} else if (isSequence()) {
 
-			return TypeHand.SEQUENCIA
+			return HandType.SEQUENCIA
 
 		} else if (isTrinca()) {
 
-			return TypeHand.TRINCA
+			return HandType.TRINCA
 
-		} else if (is2pares()) {
+		} else if (isDoisPares()) {
 
-			return TypeHand.DOIS_PARES
+			return HandType.DOIS_PARES
 
-		} else if (is1Par()) {
+		} else if (isPar()) {
 
-			return TypeHand.UM_PAR
+			return HandType.UM_PAR
 
 		} else if (isCartaAlta()) {
 
-			return TypeHand.CARTA_ALTA
+			return HandType.CARTA_ALTA
 
 		}
 	}

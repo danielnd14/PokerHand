@@ -2,9 +2,8 @@ package br.com.zg
 
 class PokerHand {
 
-
 	private List<Card> listCards
-	TypeHand typeHand
+	HandType typeHand
 	private Map<CardValue, List<Card>> groupValue
 
 
@@ -15,13 +14,12 @@ class PokerHand {
 
 		this.listCards = getListOfCardsByName(cards)
 
-
 		if (listCards.size() != 5) {
 			throw new IllegalArgumentException("Quantidade de cartas invalida")
 		}
 
 		HandClassifier handClassifier = new HandClassifier(this.listCards)
-		this.typeHand = handClassifier.typeHand
+		this.typeHand = handClassifier.handType
 		this.groupValue = handClassifier.groupValue
 	}
 
@@ -29,9 +27,10 @@ class PokerHand {
 
 		List<Card> listCards = new ArrayList()
 
-		cards.each {
-			listCards.add(new Card(it))
+		cards.collect {
+			listCards << new Card(it)
 		}
+
 		return listCards.sort()
 	}
 
@@ -55,35 +54,12 @@ class PokerHand {
 
 	private Resultado desempatar(PokerHand otherHand) {
 
-		List<CardValue> listA = new ArrayList()
-		List<CardValue> listB = new ArrayList()
+		List<CardValue> listA
+		List<CardValue> listB
 
-		groupValue.values()
-				.findAll { List<Card> grupo -> grupo.size() > 1 }.reverse().each { listA << it.value.first() }
+		listA = getListaParaDesempate(this)
+		listB = getListaParaDesempate(otherHand)
 
-		otherHand.groupValue.values()
-				.findAll { List<Card> grupo -> grupo.size() > 1 }.reverse().each { listB << it.value.first() }
-
-		Resultado result = comparar2ListasEmpatadas(listA,listB)
-
-		if(result == Resultado.DRAW){
-
-			listA = new ArrayList<CardValue>()
-			listB = new ArrayList<CardValue>()
-
-			groupValue.values()
-					.findAll { List<Card> grupo -> grupo.size() == 1 }.reverse().each { listA << it.value.first() }
-
-			otherHand.groupValue.values()
-					.findAll { List<Card> grupo -> grupo.size() == 1 }.reverse().each { listB << it.value.first() }
-
-			return comparar2ListasEmpatadas(listA, listB)
-		}
-		return result
-	}
-
-
-	private static comparar2ListasEmpatadas(List<CardValue> listA, List<CardValue>listB){
 
 		for (int i = 0; i < listA.size(); i++) {
 
@@ -93,7 +69,25 @@ class PokerHand {
 				return Resultado.WIN
 			}
 		}
+
 		return Resultado.DRAW
+	}
+
+	private static List<CardValue> getListaParaDesempate(PokerHand hand) {
+
+		List<CardValue> cardValueList
+
+		cardValueList = hand.groupValue.values()
+				.findAll { List<Card> grupo -> grupo.size() > 1 }.reverse().collect { it.first().value }
+
+		hand.groupValue.values()
+				.findAll { List<Card> grupo -> grupo.size() == 1 }.reverse().collect { cardValueList << it.first().value }
+
+		return cardValueList
+
+	}
+	List<Card> getListCards() {
+		return listCards
 	}
 
 }

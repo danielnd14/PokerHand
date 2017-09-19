@@ -4,6 +4,9 @@ class Card implements Comparable<Card> {
 
 	private Suit naipe
 	private CardValue value
+	static 	Map<String, Suit> mNaipes = ["S": Suit.SPADES, "H": Suit.HEARTS, "D": Suit.DIAMONDS, "C": Suit.CLUBS]
+	static String[] numeros = "2".."9"
+	static String[] letras = ["T", "J", "Q", "K", "A"]
 
 	Card(String id) throws IllegalArgumentException,StringIndexOutOfBoundsException{
 
@@ -14,8 +17,6 @@ class Card implements Comparable<Card> {
 	private setNaipe(String id) throws StringIndexOutOfBoundsException{
 
 		String tipo = id.substring(1, 2)
-
-		Map<String, Suit> mNaipes = ["S": Suit.SPADES, "H": Suit.HEARTS, "D": Suit.DIAMONDS, "C": Suit.CLUBS]
 
 		if (mNaipes.containsKey(tipo)) {
 			this.naipe = mNaipes.get(tipo)
@@ -32,8 +33,7 @@ class Card implements Comparable<Card> {
 	private setValue(String id) throws StringIndexOutOfBoundsException {
 
 		String value = id.substring(0, 1)
-		String[] numeros = "2".."9"
-		String[] letras = ["T", "J", "Q", "K", "A"]
+
 
 		if (numeros.contains(value)) {
 
@@ -46,19 +46,19 @@ class Card implements Comparable<Card> {
 			switch (value) {
 
 				case "T":
-					this.value = CardValue.values().getAt(8)
+					this.value = CardValue.TEN
 					break
 				case "J":
-					this.value = CardValue.values().getAt(9)
+					this.value = CardValue.VALETE
 					break
 				case "Q":
-					this.value = CardValue.values().getAt(10)
+					this.value = CardValue.QUEEN
 					break
 				case "K":
-					this.value = CardValue.values().getAt(11)
+					this.value = CardValue.KING
 					break
 				case "A":
-					this.value = CardValue.values().getAt(12)
+					this.value = CardValue.ACE
 					break
 			}
 
@@ -79,15 +79,7 @@ class Card implements Comparable<Card> {
 
 	@Override
 	int compareTo(Card o) {
-
-		if (this.value.ordinal() < o.value.ordinal()) {
-			return -1
-		}
-
-		if (this.value.ordinal() > o.value.ordinal()) {
-			return 1
-		}
-		return 0
+		return this.value.ordinal() - o.value.ordinal()
 	}
 
 	@Override
